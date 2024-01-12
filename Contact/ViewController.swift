@@ -4,6 +4,7 @@ import SnapKit
 struct MainNavigation {
     let openContact: (() -> Void)
 }
+
 class ViewController: UIViewController {
 //    let navigation: MainNavigation
 //    init(navigation: MainNavigation) {
@@ -27,7 +28,6 @@ class ViewController: UIViewController {
     }
     
     @objc func openPresent() {
-        print("clicked")
         let vc = ContactViewController()
         self.present(vc, animated: true) {
             print("Open Contact present")

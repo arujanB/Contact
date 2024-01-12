@@ -1,4 +1,6 @@
 import UIKit
+import ContactsUI
+import Contacts
 
 class ContactViewController: UIViewController {
     private var viewModel = ContactViewModel()
@@ -42,7 +44,6 @@ class ContactViewController: UIViewController {
     private let contactTableView = UITableView().apply {
         $0.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.idetifier)
         $0.backgroundColor = .clear
-//        $0.allowsSelection = false
         $0.showsVerticalScrollIndicator = false
     }
 
@@ -52,23 +53,26 @@ class ContactViewController: UIViewController {
         view.backgroundColor = .mainBackground
         setupViews()
         setupConstraints()
-        
         viewModel.customizeSearchBar(searchButton: searchBar)
         searchBar.delegate = self
-        
         contactTableView.dataSource = self
+        //contact date
+        viewModel.fetchAllContacts()
     }
     
     func alertMessage(title: String, indexPath: Int) {
-        let alert = UIAlertController(title: title, message: "You \(title) \(viewModel.listOfContact[indexPath].name) contact", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: {_ in
-            print("didSelectRowAt ALERT ok")
-        }))
+        var mess = ""
+        if viewModel.isSearched {
+            mess = "You \(title) \(viewModel.sortedArray[indexPath].name) contact"
+        }else {
+            mess = "You \(title) \(viewModel.contactsFromPhone[indexPath].name) contact"
+        }
+        let alert = UIAlertController(title: title, message: mess, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true, completion: nil)
     }
     
     @objc func closeButtonFunc() {
-        print("Close")
         self.dismiss(animated: true)
     }
 }
@@ -79,7 +83,7 @@ extension ContactViewController: UITableViewDataSource {
         if viewModel.isSearched {
             return viewModel.sortedArray.count
         }else {
-            return viewModel.listOfContact.count
+            return viewModel.contactsFromPhone.count
         }
     }
     
@@ -88,7 +92,7 @@ extension ContactViewController: UITableViewDataSource {
         if viewModel.isSearched {
             cell.configure(model: viewModel.sortedArray[indexPath.row])
         }else {
-            cell.configure(model: viewModel.listOfContact[indexPath.row])
+            cell.configure(model: viewModel.contactsFromPhone[indexPath.row])
         }
         cell.selectionStyle = .none
         cell.clickButton = { [weak self] typeOfContact in
@@ -98,19 +102,7 @@ extension ContactViewController: UITableViewDataSource {
             }else {
                 self?.alertMessage(title: "Remove", indexPath: indexPath.row)
             }
-            
         }
-//        cell.clickButton = { [weak self] in
-//            let list = self?.viewModel.listOfContact[indexPath.row]
-//            if list?.typeOfContact == .add {
-//                let alert = UIAlertController(title: "Added", message: "You added this contact", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: {_ in 
-//                    print("ALERT ok")
-//                }))
-//            }
-//            
-//            print("callback clicked")
-//        }
         return cell
     }
 }
@@ -118,7 +110,6 @@ extension ContactViewController: UITableViewDataSource {
 // MARK: - searchBar delegate
 extension ContactViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Text changed \(searchText)")
         viewModel.searchByUsername(searchText: searchText)
         contactTableView.reloadData()
         print(viewModel.isSearched)
@@ -131,7 +122,6 @@ private extension ContactViewController {
         [bottomSheetTopLine, stackViewTitle, searchBar, contactTableView].forEach {
             view.addSubview($0)
         }
-        
         viewForTitle.addSubview(mainTitle)
         [viewForTitle, closeButton].forEach { i in
             stackViewTitle.addArrangedSubview(i)
@@ -145,28 +135,23 @@ private extension ContactViewController {
             make.width.equalTo(24)
             make.height.equalTo(2)
         }
-        
         stackViewTitle.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(bottomSheetTopLine.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().inset(16)
         }
-        
         mainTitle.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        
         closeButton.snp.makeConstraints { make in
             make.size.equalTo(32)
         }
-        
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(stackViewTitle.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(7)
             make.trailing.equalToSuperview().inset(7)
         }
-        
         contactTableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview()

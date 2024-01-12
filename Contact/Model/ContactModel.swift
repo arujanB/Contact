@@ -9,7 +9,7 @@ struct ContactModel {
     let username: String
 }
 
-enum ContactType: String {
-    case add = "Add"
-    case delete = "Delete"
+enum ContactType {
+    case add
+    case delete
 }
