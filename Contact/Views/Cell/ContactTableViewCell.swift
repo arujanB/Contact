@@ -81,9 +81,13 @@ class ContactTableViewCell: UITableViewCell {
         clickButton?(saveT)
         if saveType == .add {
             saveType = .delete
+            UserDefaults.standard.set(true, forKey: "contactAdded")
         }else {
             saveType = .add
+            UserDefaults.standard.removeObject(forKey: "contactAdded")
         }
+        saveType = (saveT == .add) ? .delete : .add
+            
         change(button: addButton, type: saveType)
     }
     
