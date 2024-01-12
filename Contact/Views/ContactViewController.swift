@@ -3,28 +3,45 @@ import ContactsUI
 import Contacts
 
 class ContactViewController: UIViewController {
+    fileprivate enum ConstantValues {
+        static let borderWidth: CGFloat = 0.3
+        static let bottomSheetBoxHeigth: CGFloat = 2
+        static let searchBarHorithontalEdges: CGFloat = 7
+        static let cornerRadius: CGFloat = 10
+        static let offset: CGFloat = 12
+        static let titleFont: CGFloat = 16
+        static let closeButtonCornerRadius: CGFloat = 17
+        static let bottomSheetBoxWidth: CGFloat = 24
+        static let closeButtonSize: CGFloat = 32
+        static let mainTitle = "Добавить контролера"
+        static let search = "Search"
+        static let addText = "Add"
+        static let deleteText = "Delete"
+        static let okText = "Ok"
+    }
+    
     private var viewModel = ContactViewModel()
 //    private var sortedArray = [ContactModel]()
 //    private var isSearched = false
     
     private let bottomSheetTopLine = UIView().apply {
         $0.backgroundColor = .lightGray
-        $0.layer.borderWidth = .init(0.3)
+        $0.layer.borderWidth = .init(ConstantValues.borderWidth)
     }
     
     private let viewForTitle = UIView()
     
     private let mainTitle = UILabel().apply {
-        $0.text = "Добавить контролера"
+        $0.text = ConstantValues.mainTitle
         $0.textAlignment = .center
-        $0.font = .boldSystemFont(ofSize: 16)
+        $0.font = .boldSystemFont(ofSize: ConstantValues.titleFont)
         $0.textColor = .white
     }
     
      let closeButton = UIButton().apply {
         $0.setImage(UIImage(named: "x"), for: .normal)
         $0.backgroundColor = .closeButtonBackground
-        $0.layer.cornerRadius = 17
+         $0.layer.cornerRadius = ConstantValues.closeButtonCornerRadius
         $0.addTarget(self, action: #selector(closeButtonFunc), for: .touchUpInside)
     }
     
@@ -34,8 +51,8 @@ class ContactViewController: UIViewController {
     }
     
     private let searchBar = UISearchBar().apply {
-        $0.placeholder = "Search"
-        $0.layer.cornerRadius = 10
+        $0.placeholder = ConstantValues.search
+        $0.layer.cornerRadius = ConstantValues.cornerRadius
         $0.backgroundColor = .clear
         $0.searchBarStyle = .minimal
         $0.tintColor = .white
@@ -68,7 +85,7 @@ class ContactViewController: UIViewController {
             mess = "You \(title) \(viewModel.contactsFromPhone[indexPath].name) contact"
         }
         let alert = UIAlertController(title: title, message: mess, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alert.addAction(UIAlertAction(title: ConstantValues.okText, style: .cancel))
         present(alert, animated: true, completion: nil)
     }
     
@@ -98,9 +115,9 @@ extension ContactViewController: UITableViewDataSource {
         cell.clickButton = { [weak self] typeOfContact in
             print(typeOfContact)
             if typeOfContact == .add {
-                self?.alertMessage(title: "Add", indexPath: indexPath.row)
+                self?.alertMessage(title: ConstantValues.addText, indexPath: indexPath.row)
             }else {
-                self?.alertMessage(title: "Remove", indexPath: indexPath.row)
+                self?.alertMessage(title: ConstantValues.deleteText, indexPath: indexPath.row)
             }
         }
         return cell
@@ -131,29 +148,29 @@ private extension ContactViewController {
     func setupConstraints() {
         bottomSheetTopLine.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
-            make.width.equalTo(24)
-            make.height.equalTo(2)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(ConstantValues.offset)
+            make.width.equalTo(ConstantValues.bottomSheetBoxWidth)
+            make.height.equalTo(ConstantValues.bottomSheetBoxHeigth)
         }
         stackViewTitle.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(bottomSheetTopLine.snp.bottom).offset(12)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(bottomSheetTopLine.snp.bottom).offset(ConstantValues.offset)
+            make.leading.equalToSuperview().offset(ConstantValues.titleFont)
+            make.trailing.equalToSuperview().inset(ConstantValues.titleFont)
         }
         mainTitle.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         closeButton.snp.makeConstraints { make in
-            make.size.equalTo(32)
+            make.size.equalTo(ConstantValues.closeButtonSize)
         }
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(stackViewTitle.snp.bottom).offset(16)
-            make.leading.equalToSuperview().offset(7)
-            make.trailing.equalToSuperview().inset(7)
+            make.top.equalTo(stackViewTitle.snp.bottom).offset(ConstantValues.titleFont)
+            make.leading.equalToSuperview().offset(ConstantValues.searchBarHorithontalEdges)
+            make.trailing.equalToSuperview().inset(ConstantValues.searchBarHorithontalEdges)
         }
         contactTableView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(10)
+            make.top.equalTo(searchBar.snp.bottom).offset(ConstantValues.cornerRadius)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
