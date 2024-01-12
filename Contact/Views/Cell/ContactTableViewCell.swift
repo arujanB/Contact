@@ -2,7 +2,7 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
     static let idetifier = "ContactTableViewCell"
-    var clickButton: ((String) -> ())?
+    var clickButton: ((ContactType) -> ())?
     var saveType: ContactType?
     
     private let imageIcon = UIImageView().apply {
@@ -38,8 +38,7 @@ class ContactTableViewCell: UITableViewCell {
         $0.layer.cornerRadius = 10
         $0.layer.borderWidth = 1
         $0.backgroundColor = .contactAddDeleteButton
-        $0.addTarget(self, action: #selector(addOrDelete(_:)), for: .touchUpInside)
-    }
+}
     
     private let stackView = UIStackView().apply {
         $0.axis = .horizontal
@@ -53,23 +52,29 @@ class ContactTableViewCell: UITableViewCell {
         backgroundColor = .clear
         setupViews()
         setupConstraints()
+        addButton.addTarget(self, action: #selector(addOrDelete(_:)), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        imageIcon.image = nil
-        name.text = nil
-        change(button: addButton, type: nil)
-        phoneNumber.text = nil
-    }
+//    override func prepareForReuse() {
+//        imageIcon.image = nil
+//        name.text = nil
+//        change(button: addButton, type: nil)
+//        phoneNumber.text = nil
+//    }
     
     @objc func addOrDelete(_ sender: UIButton) {
         print("ADD or Delete contact")
-        clickButton?("Aruzhan")
-//        change(button: addButton, type: saveType)
+        guard let saveT = saveType else { return }
+        clickButton?(saveT)
+        if saveType == .add {
+            change(button: addButton, type: .delete)
+        }else {
+            change(button: addButton, type: .add)
+        }
     }
     
     func configure(model: ContactModel) {
@@ -78,8 +83,7 @@ class ContactTableViewCell: UITableViewCell {
         imageIcon.image = UIImage(named: model.imgIcon)
         saveType = model.typeOfContact
         
-        
-        change(button: addButton, type: saveType)
+        change(button: addButton, type: model.typeOfContact)
         
 //        if model.typeOfContact == .delete {
 //            print("type delete")
@@ -99,6 +103,16 @@ class ContactTableViewCell: UITableViewCell {
             button.backgroundColor = .mainBackground
             button.setTitleColor(.contactAddDeleteButton, for: .normal)
             button.layer.borderColor = UIColor.contactAddDeleteButton.cgColor
+        }else if type == .add {
+            print("type add")
+            button.setTitle("Добавить", for: .normal)
+            button.setImage(UIImage(named: "plus"), for: .normal)
+            button.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            button.setTitleColor(.mainBackground, for: .normal)
+            button.imageEdgeInsets.right = 6
+            button.layer.cornerRadius = 10
+            button.layer.borderWidth = 1
+            button.backgroundColor = .contactAddDeleteButton
         }
     }
 }
@@ -106,9 +120,9 @@ class ContactTableViewCell: UITableViewCell {
 // MARK: - setupViews, setupConstaints
 private extension ContactTableViewCell {
     func setupViews(){
-        addSubview(stackView)
+        contentView.addSubview(stackView)
 //        addSubview(addButton)
-        
+//        
         [name, phoneNumber].forEach { i in
             stackViewInfo.addArrangedSubview(i)
         }

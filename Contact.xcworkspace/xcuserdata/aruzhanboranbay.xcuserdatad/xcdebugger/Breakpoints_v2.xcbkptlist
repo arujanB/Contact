@@ -14,10 +14,42 @@
             filePath = "Contact/Views/ContactViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "28F15CDA-3525-4E6A-8B8F-CB224EB99E1B - 69ab34acb72fc81b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "28F15CDA-3525-4E6A-8B8F-CB224EB99E1B - 69ab34acb72fc81b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,8 +62,8 @@
             filePath = "Contact/Views/ContactViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -65,6 +97,96 @@
                   endingLineNumber = "74"
                   offsetFromSymbolStart = "64">
                </Location>
+               <Location
+                  uuid = "A5033342-703F-4814-9520-BCB23EC8F618 - 69ab34acb72fc913"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "A5033342-703F-4814-9520-BCB23EC8F618 - 6622f08f8e2a1cb7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Contact.ContactType) -&gt; () in Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "A5033342-703F-4814-9520-BCB23EC8F618 - 878b4c012a7567a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "A5033342-703F-4814-9520-BCB23EC8F618 - 69ab34acb72fc913"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "848">
+               </Location>
+               <Location
+                  uuid = "A5033342-703F-4814-9520-BCB23EC8F618 - 69ab34acb72fc913"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "904">
+               </Location>
+               <Location
+                  uuid = "A5033342-703F-4814-9520-BCB23EC8F618 - 878b4c012a7567a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "220">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,9 +200,72 @@
             filePath = "Contact/Views/ContactViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D8850A16-E22B-4EE6-818F-46C2A7EDEE11 - f0fb47e0b17791d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Contact.ContactViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  uuid = "D8850A16-E22B-4EE6-818F-46C2A7EDEE11 - e6e933ed09df78d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Contact.ContactViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "D8850A16-E22B-4EE6-818F-46C2A7EDEE11 - 878b4c012a75649b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Contact.ContactViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aruzhanboranbay/Desktop/Contact/Contact/Views/ContactViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "2260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84850A36-472F-497B-A813-D05A70D389AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Contact/Views/Cell/ContactTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "addOrDelete(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

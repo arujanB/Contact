@@ -5,7 +5,7 @@ struct ContactModel {
     let name: String
     let phoneNumber: String
     let additionalPhoneNumber: String?
-    let typeOfContact: ContactType?
+    var typeOfContact: ContactType?
     let username: String
 }
 

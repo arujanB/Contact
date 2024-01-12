@@ -1,9 +1,9 @@
 import UIKit
 
 class ContactViewController: UIViewController {
-    private let viewModel = ContactViewModel()
-    private var sortedArray = [ContactModel]()
-    private var isSearched = false
+    private var viewModel = ContactViewModel()
+//    private var sortedArray = [ContactModel]()
+//    private var isSearched = false
     
     private let bottomSheetTopLine = UIView().apply {
         $0.backgroundColor = .lightGray
@@ -42,7 +42,7 @@ class ContactViewController: UIViewController {
     private let contactTableView = UITableView().apply {
         $0.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.idetifier)
         $0.backgroundColor = .clear
-        $0.allowsSelection = false
+//        $0.allowsSelection = false
         $0.showsVerticalScrollIndicator = false
     }
 
@@ -59,6 +59,14 @@ class ContactViewController: UIViewController {
         contactTableView.dataSource = self
     }
     
+    func alertMessage(title: String, indexPath: Int) {
+        let alert = UIAlertController(title: title, message: "You \(title) \(viewModel.listOfContact[indexPath].name) contact", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: {_ in
+            print("didSelectRowAt ALERT ok")
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
     @objc func closeButtonFunc() {
         print("Close")
         self.dismiss(animated: true)
@@ -68,8 +76,8 @@ class ContactViewController: UIViewController {
 // MARK: - tableView dataSource
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearched {
-            return sortedArray.count
+        if viewModel.isSearched {
+            return viewModel.sortedArray.count
         }else {
             return viewModel.listOfContact.count
         }
@@ -77,31 +85,43 @@ extension ContactViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.idetifier, for: indexPath) as! ContactTableViewCell
-        if isSearched {
-            cell.configure(model: sortedArray[indexPath.row])
+        if viewModel.isSearched {
+            cell.configure(model: viewModel.sortedArray[indexPath.row])
         }else {
             cell.configure(model: viewModel.listOfContact[indexPath.row])
         }
-        
-        cell.clickButton = { str in
-            print("\(str) callback clicked")
+        cell.selectionStyle = .none
+        cell.clickButton = { [weak self] typeOfContact in
+            print(typeOfContact)
+            if typeOfContact == .add {
+                self?.alertMessage(title: "Add", indexPath: indexPath.row)
+            }else {
+                self?.alertMessage(title: "Remove", indexPath: indexPath.row)
+            }
+            
         }
+//        cell.clickButton = { [weak self] in
+//            let list = self?.viewModel.listOfContact[indexPath.row]
+//            if list?.typeOfContact == .add {
+//                let alert = UIAlertController(title: "Added", message: "You added this contact", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: {_ in 
+//                    print("ALERT ok")
+//                }))
+//            }
+//            
+//            print("callback clicked")
+//        }
         return cell
     }
 }
-
-// MARK: - tableView delegate
 
 // MARK: - searchBar delegate
 extension ContactViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Text changed \(searchText)")
-        sortedArray = viewModel.listOfContact.filter({
-            $0.username.prefix(searchText.count) == searchText
-        })
-        isSearched = true
+        viewModel.searchByUsername(searchText: searchText)
         contactTableView.reloadData()
-        print(isSearched)
+        print(viewModel.isSearched)
     }
 }
 

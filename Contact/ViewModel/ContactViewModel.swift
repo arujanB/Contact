@@ -2,6 +2,9 @@ import Foundation
 import UIKit
 
 struct ContactViewModel {
+    var sortedArray = [ContactModel]()
+    var isSearched = false
+    
     let listOfContact: [ContactModel] = [
         ContactModel(imgIcon: "avatar", name: "Ергали", phoneNumber: "+7 (701) 839 39 04", additionalPhoneNumber: nil, typeOfContact: .delete, username: "@ergali"),
         ContactModel(imgIcon: "avatar1", name: "Ансар", phoneNumber: "+7 (777) 298 12 53", additionalPhoneNumber: nil, typeOfContact: .add, username: "@ansar"),
@@ -21,6 +24,13 @@ struct ContactViewModel {
             searchBar.textColor = .white
             searchBar.leftView?.tintColor = .white
         }
+    }
+    
+    mutating func searchByUsername(searchText: String) {
+        sortedArray = listOfContact.filter({
+            $0.username.prefix(searchText.count) == searchText
+        })
+        isSearched = true
     }
     
 }
